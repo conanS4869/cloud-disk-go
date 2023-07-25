@@ -1,0 +1,10 @@
+Name: core-api
+Host: 0.0.0.0
+Port: 8888
+MaxBytes: 8388608
+
+Mysql:
+  DataSource: root:123456@tcp(192.168.12.133:3306)/cloud_disk?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Addr: 192.168.12.133:6379
