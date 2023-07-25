@@ -16,7 +16,6 @@ func RefreshAuthorizationHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
-
 		l := logic.NewRefreshAuthorizationLogic(r.Context(), svcCtx)
 		resp, err := l.RefreshAuthorization(&req, r.Header.Get("Authorization"))
 		if err != nil {
