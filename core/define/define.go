@@ -27,9 +27,9 @@ var CodeExpire = 300
 var ObjectStorageType = os.Getenv("ObjectStorageType")
 
 // TencentSecretKey 腾讯云对象存储
-var TencentSecretKey = "nVCk9OQGuOltwtg6HH5g7UgjiZP8kIi7"
-var TencentSecretID = "AKIDTSJxQhVhnlcVJwNjy1tfMvRo05D9JID6"
-var CosBucket = "https://conan4869-1319666860.cos.ap-shanghai.myqcloud.com"
+var TencentSecretKey = os.Getenv("TencentSecretKey")
+var TencentSecretID = os.Getenv("TencentSecretID")
+var CosBucket = ".myqcloud.com"
 
 // MinIOAccessKeyID MinIO 配置
 var MinIOAccessKeyID = os.Getenv("MinIOAccessKeyID")
