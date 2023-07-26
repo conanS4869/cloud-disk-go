@@ -17,6 +17,8 @@ func ShareBasicDetailHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
+		// 地址栏请求
+		req.Identity = r.URL.Query().Get("identity")
 		l := logic.NewShareBasicDetailLogic(r.Context(), svcCtx)
 		resp, err := l.ShareBasicDetail(&req)
 		if err != nil {

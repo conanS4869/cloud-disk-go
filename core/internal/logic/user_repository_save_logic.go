@@ -44,11 +44,13 @@ func (l *UserRepositorySaveLogic) UserRepositorySave(req *types.UserRepositorySa
 		err = errors.New("已超出当前容量")
 		return
 	}
+
 	// 更新当前容量
 	_, err = l.svcCtx.Engine.Exec("UPDATE user_basic SET now_volume = now_volume + ? WHERE identity = ?", rp.Size, userIdentity)
 	if err != nil {
 		return
 	}
+
 	// 新增关联记录
 	ur := &models.UserRepository{
 		Identity:           helper.UUID(),

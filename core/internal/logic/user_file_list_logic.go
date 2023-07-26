@@ -39,7 +39,6 @@ func (l *UserFileListLogic) UserFileList(req *types.UserFileListRequest, userIde
 		page = 1
 	}
 	offset := (page - 1) * size
-
 	ur := new(models.UserRepository)
 	_, err = l.svcCtx.Engine.Table("user_repository").Select("id").
 		Where("identity = ?", req.Identity).Get(ur)

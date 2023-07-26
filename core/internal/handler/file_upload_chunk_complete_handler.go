@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"cloud-disk-go/core/models"
+	"errors"
 	"net/http"
 
 	"cloud-disk-go/core/internal/logic"
@@ -14,6 +16,18 @@ func FileUploadChunkCompleteHandler(svcCtx *svc.ServiceContext) http.HandlerFunc
 		var req types.FileUploadChunkCompleteRequest
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
+			return
+		}
+		// 判断是否已达用户容量上限
+		userIdentity := r.Header.Get("UserIdentity")
+		ub := new(models.UserBasic)
+		_, err := svcCtx.Engine.Where("identity = ?", userIdentity).Select("now_volume, total_volume").Get(ub)
+		if err != nil {
+			httpx.Error(w, err)
+			return
+		}
+		if req.Size+ub.NowVolume > ub.TotalVolume {
+			httpx.Error(w, errors.New("已超出当前容量"))
 			return
 		}
 

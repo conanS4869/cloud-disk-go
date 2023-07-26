@@ -144,8 +144,8 @@ type UserFile struct {
 }
 
 type UserRepositorySaveRequest struct {
-	ParentId           int64  `json:"parentId"`
-	RepositoryIdentity string `json:"repositoryIdentity"`
+	ParentId           int64  `json:"parent_id"`
+	RepositoryIdentity string `json:"repository_identity"`
 	Ext                string `json:"ext"`
 	Name               string `json:"name"`
 }

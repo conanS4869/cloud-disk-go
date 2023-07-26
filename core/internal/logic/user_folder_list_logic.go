@@ -42,6 +42,7 @@ func (l *UserFolderListLogic) UserFolderList(req *types.UserFolderListRequest) (
 	if err != nil {
 		return
 	}
+
 	resp.List = ufl
 	return
 }
